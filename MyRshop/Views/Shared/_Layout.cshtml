@@ -1,0 +1,567 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /*.searchBar {
+            width: 380px;
+            margin: 10px;
+        }*/
+
+        .abc {
+            position: relative;
+            z-index: 1;
+            left: -30px;
+        }
+    </style>
+    <title> اموزشگاه آسا- حسابداری-کامپیوتر-نجف اباد</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Classic Style Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- //for-mobile-apps -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="/js/jquery.min.js"></script>
+    <!-- //js -->
+    <!-- cart -->
+    <script src="/js/simpleCart.min.js"></script>
+    <!-- cart -->
+    <!-- for bootstrap working -->
+    <!--ترجمه شده توسط مرجع تخصصی برنامه نویسان-->
+    <script type="text/javascript" src="/js/bootstrap-3.1.1.min.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- animation-effect -->
+    <link href="/css/animate.min.css" rel="stylesheet">
+    <script src="/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!-- //animation-effect -->
+    <link href='//fonts.googleapis.com/css?family=Cabin:400,500,600,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+    <!-- global styles -->
+    @*<link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet">*@
+
+    <link href="/themes/css/flexslider.css" rel="stylesheet" />
+    @*<link href="themes/css/main.css" rel="stylesheet" />*@
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--for getting total price-->
+    <style>
+        .top-footer {
+            padding: 10px;
+            padding-top: 10px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="rtl">
+
+    <div class="header " dir="rtl">
+        <!--topheader-->
+
+        <div class="header-grid">
+            <div class="container  html">
+                <div class="header-right animated wow fadeInRight" data-wow-delay=".5s">
+                    <ul>
+                        <li>
+                            <i class="glyphicon glyphicon-headphones"></i><a href="/Home/Index">
+                                اموزشگاه اسا
+                            </a>
+                        </li>
+                        <li><i class="glyphicon glyphicon-envelope"></i><a href="htttps://www.google.com">t.me\AsaTarazSepahan</a></li>
+                        <li><i class="glyphicon glyphicon-earphone"></i>+3142670581</li>
+
+                    </ul>
+                </div>
+                <div class="header-left animated wow fadeInLeft" data-wow-delay=".5s">
+                    <div class="header-left1">
+
+                    </div>
+                    <div class="header-left2">
+                        <ul>
+                   
+                                <form class="navbar-form pull-right" action="#" method="get">
+                                    <button type="submit"><i class="fa fa-search" ></i></button>
+                                    <input   class="searchBar" placeholder="جستجو.." type="text" style="border-radius:7px" class="span1" name="search" id="navSearchInput">
+                                </form>
+                                @*<partial name="_Groups"></partial>*@
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark">@User.Identity.Name خوش امدید </a>
+
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">خروج</a>
+                                    </li>
+
+                                }
+
+
+                                else
+                                {
+                                    <li><i class="glyphicon glyphicon-log-in"></i><a asp-area="" asp-controller="Account" asp-action="Login">ورود</a></li>
+                                    <li><i class="glyphicon glyphicon-book"></i><a asp-area="" asp-controller="Account" asp-action="Register">ثبت نام</a></li>
+                                }
+                        </ul>
+
+                        @*<div class="cart box_1">
+                                <a href="checkout.html">
+                                    <h3>
+                                        <div class="total">
+                                            <span class="simpleCart_total">"$444"</span> (<span id="simpleCart_quantity" class="simpleCart_quantity">4</span> آیتم ها)
+                                        </div>
+                                        <img src="images/cart.png" alt="" />
+                                    </h3>
+                                </a>
+                                <p>
+                                    <a href="javascript:;" class="simpleCart_empty">
+                                        سبد خرید خالی
+                                    </a>
+                                </p>
+                                <div class="clearfix"> </div>
+                            </div>*@
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+
+        <!--//topheader-->
+        <div class="container">
+            <div class="logo-nav ">
+
+                <nav class="navbar navbar-default">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <!--ترجمه شده توسط مرجع تخصصی برنامه نویسان-->
+                    <div class="navbar-header nav_2">
+                        <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                            <span class="sr-only">
+                                تعویض ناوبری
+                            </span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="navbar-brand logo-nav-right ">
+                            <h1 class="animated wow pulse" data-wow-delay=".5s">
+                                <a href="/">
+                                آسا تراز سپاهان
+                                    
+                                    <img src="~/images/Logo/logo.jpg" />
+                                </a>
+                            </h1>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs" style="font-size:18px">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index" class="act">صفحه اصلی</a></li>
+                            <!-- Service  Menu -->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> خدمات<b class="caret"></b></a>
+                                <ul class="dropdown-menu multi">
+                                    <div class="row" style="font-size:18px">
+                                        <div class="col-sm-6">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>حسابداری</h6>
+
+                                                <li>
+                                                    <a href="/BlogAccounting/FinancialDepartment">
+                                                        انجام امور مالی
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/BlogAccounting/TaxAdvice">
+                                                        انجام امور مالیاتی
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/BlogAccounting/IntroducingAccountant">
+                                                        استخدام
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/BlogAccounting/TaxAffairs">
+                                                        مشاوره مالیاتی
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/BlogAccounting/HiringAccountant">
+                                                        درخواست نیروی کار
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/BlogAccounting/HiringTeacher">
+                                                        استخدام مدرس
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>کامپیوتر </h6>
+                                                <li>
+                                                    <a href="/BlogComputer/SiteDesign">
+                                                        طراحی و توسعه سایت
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/BlogComputer/SoftwareInstallation">
+                                                        نصب و راه اندازی انواع نرم افزار ها
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/BlogComputer/WindowsInstallation">
+                                                        نصب ویندوز
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/BlogComputer/NetworkSetup">
+                                                        راه اندازی شبکه
+                                                    </a>
+                                                </li>
+                                                @*<li>
+                                <a href="products.html">
+                                    تولید بازی های رایانه ای
+                                </a>
+                            </li>*@
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+
+                                    <div class="row-top">
+                                        <div class="col-sm-6 row1">
+                                            <a href="products.html"><img src="images/AccountencyWork.jpg" alt="" class="img-responsive"></a>
+                                        </div>
+                                        <div class=" col-sm-6 row2">
+                                            <a href="products.html"><img src="images/programmer.jpg" alt="" class="img-responsive"></a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <!-- Course  Menu -->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">دوره ها<b class="caret"></b></a>
+                                <ul class="dropdown-menu multi">
+                                    <div class="row" style="font-size:18px">
+                                        <div class="col-sm-6">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>حسابداری</h6>
+
+                                                <li>
+                                                    <a href="/CourseAccounting/Accounting">
+                                                        دوره حسابداری
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="products.html">
+                                                        دوره امور مالیاتی
+                                                    </a>
+                                                </li>
+                                                <li><a href="products.html">دوره کمک حسابداری</a></li>
+
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>کامپیوتر </h6>
+                                                <li>
+                                                    <a href="/CourseComputer/Icdl">
+                                                        دوره Icdl
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="products.html">
+                                                        دوره Icdl فتوشاپ
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="products.html">
+                                                        دوره برنامه نویسی C#
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="products.html">
+                                                        دوره طراحی سایت
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+
+                                    <div class="row-top">
+                                        <div class="col-sm-6 row1">
+                                            <a href="products.html"><img src="/images/Accountency.jpg" alt="" class="img-responsive"></a>
+                                        </div>
+                                        <div class=" col-sm-6 row2">
+                                            <a href="products.html"><img src="/images/computer.jpg" alt="" class="img-responsive"></a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" id="arialink" data-toggle="dropdown">دانلود ها<b class="caret"></b></a>
+                                <ul class="dropdown-menu " style="font-size:18px">
+
+
+
+                                    <li>
+                                        <a href="/Downloads/DownloadsSoftware">دانلود نرم افزار</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Downloads/DownloadsIndex">دانلود فایل های اموزشی</a>
+                                    </li>
+
+                                    @*<div class="clearfix"></div>*@
+                                </ul>
+                                </liclass="dropdown">
+
+
+                            <li><a asp-area="" asp-controller="Home" asp-action="ContactUs">درباره با ما</a></li>
+                            <li><a href="/Filme/Index">فیلم ها</a></li>
+                            <li><a href="/Comment/Comment">نظرات کاربران</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+        </div>
+
+
+    </div>
+    <section class="homepage-slider" id="home-slider">
+        <div class="flexslider" dir="rtl">
+            <ul class="slides">
+                <li>
+                    <img src="images/carousel/home_topbanner1.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="images/carousel/download.jfif" alt="" />
+                    <div class="intro">
+                        <h1>برگزاری سمینار های اموزشی </h1>
+                        <p><span>تخفیف ویژه دوره ها</span></p>
+                        <p><span>خدمات ویژه همراه با پشتیبانی</span></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <hr />
+    <section class="header_text" style="text-align:center">
+        <h4>در این مکان ما به شما اموزش نمی دهیم بلکه این خود شما هستید که راغب به یادگیری می شوید</h4>
+    </section>
+    <br />
+
+    <div class="container" style="width:100%">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title"><h3>خدمات حسابداری</h3></div>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="multi-column-dropdown">
+                            <li>
+                                <a href="/Admin/Products">
+                                    مدیریت
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/BlogAccounting/FinancialDepartment">
+                                    انجام امور مالی
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/BlogAccounting/TaxAdvice">
+                                    انجام امور مالیاتی
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/BlogAccounting/IntroducingAccountant">
+                                    استخدام
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/BlogAccounting/TaxAffairs">
+                                    مشاوره مالیاتی
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/BlogAccounting/HiringAccountant">
+                                    درخواست نیروی کار
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/BlogAccounting/HiringTeacher">
+                                    استخدام مدرس
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title"><h3>خدمات کامپیوتر</h3></div>
+                    </div>
+                    <div class="panel-body">
+
+                        <ul class="multi-column-dropdown">
+        
+                            <li>
+                                <a href="/BlogComputer/SiteDesign">
+                                    طراحی و توسعه سایت
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/BlogComputer/SoftwareInstallation">
+                                    نصب و راه اندازی انواع نرم افزار ها
+                                </a>
+                            </li>
+       
+                            <li>
+                                <a href="/BlogComputer/NetworkSetup">
+                                    راه اندازی شبکه
+                                </a>
+                            </li>
+     
+                        </ul>
+                    </div>
+                    </div>
+                        @await Component.InvokeAsync("ProductGropsComponent")
+
+                    </div>
+                    <div class="col-md-10">
+                        @RenderBody()
+
+                    </div>
+                </div>
+            </div>
+
+
+    <div class="top-footer social animated wow fadeInUp animated" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+        <div class="container">
+            <div class="col-sm-3 social-ic">
+                <div class="icon">
+                    <img src="~/images/topfooter/cost.png" alt="" data-lazy-src="~/images/topfooter/cost.png" data-ll-status="loaded" class="entered lazyloaded"><noscript><img src="https://www.aryatehran.com/wp-content/uploads/2019/10/affordable.png" alt=""></noscript>
+                </div>
+                <div class="desc">پایین ترین قیمت آموزش</div>
+            </div>
+            <div class="col-sm-3 social-ic">
+                <div class="icon">
+                    <img src="~/images/topfooter/course.png" alt="" data-lazy-src="~/images/topfooter/course.png" data-ll-status="loaded" class="entered lazyloaded"><noscript><img src="https://www.aryatehran.com/wp-content/uploads/2019/10/icon-remote-support.png" alt=""></noscript>
+                </div>
+                <div class="desc">دوره های مناسب بازار کار</div>
+            </div>
+            <div class="col-sm-3 social-ic">
+                <div class="icon">
+                    <img src="~/images/topfooter/guarantee.png" alt="" data-lazy-src="~/images/topfooter/guarantee.png" data-ll-status="loaded" class="entered lazyloaded"><noscript><img src="https://www.aryatehran.com/wp-content/uploads/2019/10/guarantee.png" alt=""></noscript>
+                </div>
+                <div class="desc">تضمین یادگیری</div>
+            </div>
+            <div class="col-sm-3 social-ic">
+                <div class="icon">
+                    <img src="~/images/topfooter/student.png" alt="" data-lazy-src="~/images/topfooter/student.png" data-ll-status="loaded" class="entered lazyloaded"><noscript><img src="https://www.aryatehran.com/wp-content/uploads/2019/10/student.png" alt=""></noscript>
+                </div>
+                <div class="desc">مدرک فنی حرفه ای</div>
+            </div>
+
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- footer -->
+    <!--ترجمه شده توسط مرجع تخصصی برنامه نویسان-->
+
+    <div class="footer" style=" position:relative ;
+  bottom: 0;
+  width: 100%;
+ ">
+
+        <div class="container">
+            <div class="footer-top">
+                <div class="col-md-9 footer-top1">
+                    <h4>آموزشگاه آسا تراز سپاهان </h4>
+                    <p>
+                        موسسه حسابداری و کامپیوتر آسا تراز سپاهان کلیه دوره ها را پوشش می دهد .
+                        شما نیز میتوانید تمامی پروژه های خود را در اختیار ما بگذارید.
+                        انجام امور مالیاتی،حسابداری،طراحی و توسعه وب سایت
+                    </p>
+                </div>
+                <div class="col-md-12 footer-top2">
+                    <a href="contact.html">تماس با ما</a>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="footer-grids">
+                <div class="col-md-4 footer-grid animated wow fadeInRight" data-wow-delay=".5s">
+                    <h3>درباره ما</h3>
+                    <p>آموزشگاه اسا  با مدیریت آقای  حاج صادقیان و خانم صالحی در خدمت شماست <span></span></p>
+                </div>
+                <div class="col-md-4 footer-grid animated wow fadeInRight" data-wow-delay=".6s">
+                    <h3>
+                        اطلاعات تماس
+                    </h3>
+                    <ul>
+                        <li><i class="glyphicon glyphicon-map-marker"></i>ابتدای بلوار جمهوری شرقی کوچه حاج صادقیان <span>اصفهان- نجف اباد</span></li>
+                        <li class="foot-mid"><i class="glyphicon glyphicon-envelope"></i><a href="mailto:info@example.com">info@example.com</a></li>
+                        <li><i class="glyphicon glyphicon-earphone"></i>03142670581</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 footer-grid animated wow fadeInRight" data-wow-delay=".7s">
+                    <h3>
+                        ثبت نام برای خبرنامه
+                    </h3>
+                    <form>
+                        <input type="text" placeholder="ایمیل" required="">
+                        <input type="submit" value="ارسال">
+                    </form>
+
+                </div>
+
+                <div class="clearfix"> </div>
+            </div>
+
+            <div class="copy-left animated wow fadeInUp" data-wow-delay=".5s">
+                <p>کلیه حقوق مادی و معنوی برای مجموعه برنامه نویسان محفوظ می باشد<a href="http://barnamenevisan.org/">برنامه نویسان</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- //footer -->
+    <!--ترجمه شده توسط مرجع تخصصی برنامه نویسان-->
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

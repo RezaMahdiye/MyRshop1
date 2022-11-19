@@ -1,0 +1,61 @@
+﻿@page
+@model MyRshop.Pages.Admin.ManageClassProgram.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>جزئیات</h1>
+
+<div>
+    <h4>ClassProgram</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassProgram.Days)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassProgram.Days)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassProgram.BiginEndTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassProgram.BiginEndTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassProgram.BiginDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassProgram.BiginDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassProgram.HoleTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassProgram.HoleTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassProgram.TeacherName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassProgram.TeacherName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassProgram.Capacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassProgram.Capacity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassProgram.Product)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassProgram.Product.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ClassProgram.Id">ویرایش</a> |
+    <a asp-page="./Index">برگشت</a>
+</div>

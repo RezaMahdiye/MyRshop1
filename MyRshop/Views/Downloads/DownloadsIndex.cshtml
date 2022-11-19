@@ -1,0 +1,38 @@
+﻿@model IEnumerable<FileModel>
+@{
+    ViewData["Title"] = "DownloadsIndex";
+}
+    <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<h1>دانلود فایل ها</h1>
+<div class="row">
+    <div dir="rtl" class="col-md-4">
+        <h2 class="title" style="color:deepskyblue;padding-top:20px">آموزش حسابداری</h2>
+        <p style="font-size:12px;padding-bottom:20px;">زمان ایجاد:12:56</p>
+        <div style="padding-bottom:20px;" class="text-body">
+            متن ساختگی است متن ساختگی اس متن ساختگی اس متن ساختگی اس متن ساختگی اس متن ساختگی اس متن ساختگی استتتتتت متن ساختگی است
+        </div>
+        <input type="button" dir="ltr" href="#" value="دانلود" class="btn btn-success" style="width:48px;height:38px;" />
+    </div>
+    @foreach (var item in Model)
+    {
+        <div dir="rtl" class="col-md-4">
+            <h2 class="title" style="color:deepskyblue;padding-top:20px">@item.Name</h2>
+            <p style="font-size:12px;padding-bottom:20px;">زمان ایجاد:@item.TimeSystem</p>
+            <div style="padding-bottom:20px;" class="text-body">
+                @item.Description
+            </div>
+            <input type="button" dir="ltr" href="#" value="دانلود" class="btn btn-success" style="width:48px;height:38px;" />
+        </div>
+    }
+
+</div>
+@*<section class="post-information guide-box clearfix">
+    <i class="icon-info"></i>
+    <div class="content">
+        <ul>
+            <li><i class="icon-database"></i>حجم فایل: 102.14 مگابایت</li>
+            <li><i class="icon-earth"></i>شرکت سازنده: investintech.com</li>
+            <li><i class="icon-reply"></i>منبع : <a href="https://www.p30world.com/" data-wpel-link="internal">دانلود نرم افزار</a></li>
+        </ul>
+    </div>
+</section>*@

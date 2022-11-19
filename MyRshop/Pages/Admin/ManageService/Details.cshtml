@@ -1,0 +1,55 @@
+﻿@page
+@model MyRshop.Pages.Admin.ManageService.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>AffairModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AffairModel.Activity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AffairModel.Activity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AffairModel.WorkshopName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AffairModel.WorkshopName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AffairModel.BossName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AffairModel.BossName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AffairModel.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AffairModel.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AffairModel.TellPhon)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AffairModel.TellPhon)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AffairModel.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AffairModel.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.AffairModel.id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

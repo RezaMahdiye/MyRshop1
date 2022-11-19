@@ -1,0 +1,118 @@
+﻿
+@model Product
+  
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 ">
+        <div class="box-shadow">
+            <div class="img-layer">
+            <a title="آموزش داینامیک کردن قالب رزومه با PHP" href="#"> 
+                <i class="zmdi zmdi-more-vert"></i> </a>
+            <img class="" src="/images/@(Model.Id).jpg" height="260" width="300" data-src="/images/@(Model.Id).jpg" alt="آموزش">
+            </div>
+            <h2 style="line-height: 40px;
+                    height: 40px;                
+                    color: #1e2f38;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    display: block;">
+                <a  asp-action="Detail"
+                       asp-controller="Home"
+                       asp-route-id="@Model.Id" >@Model.Name </a>
+            </h2>
+             <div class="detail">
+            <div style="border-bottom: 2px solid #eaeff2;padding-bottom: 9px;" class="top">
+          
+            </div>
+            <div class="bottom">
+                <span class="time"
+                      style="line-height: 35px;
+                color: #00b3e9;
+                font-size: 15px;
+                word-spacing: 0px;
+                padding: 5px 0 6px;">
+                    @* مدرس:@Model.ClassProgram.TeacherName*@
+                    <i>  قیمت:@Model.Item.Price </i>
+                </span>
+                        <span class="price" style="position: absolute;
+                left: 0;
+                padding-left: 18px;
+                bottom: 14px;
+                font-size: 13px;
+                color: #6fc341;">  @*<i>  قیمت:@Model.Item.Price </i>*@ </span>
+             </div>
+                
+            </div>
+    </div>
+
+    </div>
+
+
+
+
+
+
+
+        @*<a asp-action="Detail"
+           asp-controller="Home"
+           asp-route-id="@Model.Id" class="row">
+            <div class="card-body">
+                <div class="col-sm-12">
+                    <img src="/images/@(Model.Id).jpg" height="260" width="260" class="card-img-top  img-thumbnail" />
+
+                </div>
+
+                <div style="padding-right:0px" class="row col-sm-12">
+                    <div class="col-sm-9 center">
+                        <h4 class="card-title" style="text-align:center">@Model.Name</h4>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <br />
+                        <div class="col-sm-7" style="font-size:13px;padding-right:10px">
+                            <span dir="rtl" title="حاج صادقیان">
+                                مدرس:@Model.TeacherName
+                            </span>
+                        </div>
+                        <div class="col-sm-9" style="font-size:13px;direction:ltr;padding-right:1px">
+                            <span dir="rtl" class="price bottom-left">
+                                قیمت:@Model.Item.Price
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>*@
+   
+            
+@*<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 course-col">
+        <div style="border:solid ;border-radius:7px;border-width:thin">
+            <a class="box-shadow" asp-action="Detail"
+               asp-controller="Home"
+               asp-route-id="@Model.Id">
+
+                <img src="/images/@(Model.Id).jpg" height="260" width="260" class="card-img-top img-thumbnail" />
+                <div class="card-body">
+                    <div>
+                        <br />
+                        <h4 class="card-title " style="text-align:center">@Model.Name</h4>
+                    </div>
+
+                </div>
+
+                <div class="detail">
+                    <div class="top-right" style="font-size:11px" dir="rtl">
+                        <a title="مدائنی" href="/masters/AdminUser"><i class="zmdi zmdi-account"></i> حاج صادقیان </a>
+                    </div>
+                    <div class="bottom-left" style="font-size:11px" dir="rtl">
+                        <span class="time" dir="rtl"><i class="zmdi zmdi-time"></i> 10:57:00 </span>
+                        <span class="price" style="padding-right:70px">
+                            <i> @Model.Item.Price </i>
+                        </span>
+                    </div>
+
+                </div>
+
+            </a>
+        </div>
+    </div>*@

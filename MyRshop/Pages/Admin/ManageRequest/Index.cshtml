@@ -1,0 +1,102 @@
+﻿@page
+@model MyRshop.Pages.Admin.ManageRequest.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].Activity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].WorkshopName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].BossName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].TellPhon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].Birthday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].Experience)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].Marital)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].Sex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].SalaryPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].Spetial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].SoftwareName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Request) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkshopName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BossName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TellPhon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Experience)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marital)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalaryPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Spetial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoftwareName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

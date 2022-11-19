@@ -1,0 +1,104 @@
+﻿@page
+@model MyRshop.Pages.Admin.AddModel
+@{
+    ViewData["Title"] = "Add";
+}
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+<h1>افزودن دوره</h1>
+<hr />
+<form method="post" enctype="multipart/form-data">
+    <dl class="dl-horizontal">
+        <dd><label asp-for="Product.Name">نام دوره:</label></dd>
+        <dt>
+            <input class="form-control" asp-for="Product.Name" />
+            <span asp-validation-for="Product.Name"></span>
+        </dt>
+        <dd><label asp-for="Product.Description">توضیحات:</label></dd>
+        <dt>
+            <textarea  asp-for="Product.Description" class="form-control"></textarea>
+            <span asp-validation-for="Product.Description"></span>
+        </dt>
+        <dd><label asp-for="Product.Price" onkeyup="separateNum(this.value,this);">قیمت:</label></dd>
+        <dt>
+            <input asp-for="Product.Price" class="form-control" />
+            <span asp-validation-for="Product.Price"></span>
+        </dt>
+
+        <dd><label asp-for="Product.picture">عکس:</label></dd>
+        <dt>
+
+            <input asp-for="Product.picture" value="انتخاب عکس" />
+            <span asp-validation-for="Product.picture"></span>
+            <br />
+            <label>فقط عکس با پسوند .jpg وارد کنید.</label>
+        </dt>
+        <dd></dd>
+        @if (ViewData["Message"] != null)
+        {
+            @*<script type="text/javascript">
+                window.onload = function () {
+                    alert("@ViewData["Message"]");
+                };
+                </script>*@
+        }
+        @*<dd><label asp-for="Product.CateName" >Groups</label></dd>
+            <dt>
+                <partial name="_Groups"></partial>
+                <input list="browsers" id="browsers" asp-for="Product.CateName" />
+                <datalist id="browsers">
+                    <option value="Product.CateName"></option>
+                    </datalist>
+                    <span asp-validation-for="Product.Cateid"></span>
+            </dt>*@
+
+        <dt>
+            @*<input  href="/admin/manageclassprogram/Create"  asp-for="Product.Id"  style="padding-left:6px">اضافه کردن برنامه</input>*@
+            <input type="submit" class="btn btn-success" value="اضافه کردن برنامه" />
+        </dt>
+    </dl>
+
+</form>
+
+<script>
+
+
+    $(document).ready(function () {
+        $("#btn1").on('click', function () {
+            selected_value = $("input[name='btnAdd']:checked").val();
+
+            location.href = "/admin/manageclassprogram/Create?proId=" + selected_value;
+        });
+    });
+
+    CKEDITOR.replace('Product.Description');
+</script>
+@*@section scripts{
+    <script src="~/lib/ckeditor5-build-classic/ckeditor.js"></script>
+}*@
+
+<script type="text/javascript">
+    CKEDITOR.replace("Product.Description");
+
+
+  
+</script>
+<script>
+    function separateNum(value, input) {
+        /* seprate number input 3 number */
+        var nStr = value + '';
+        nStr = nStr.replace(/\,/g, "");
+        x = nStr.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        if (input !== undefined) {
+
+            input.value = x1 + x2;
+        } else {
+            return x1 + x2;
+        }
+    }
+</script>

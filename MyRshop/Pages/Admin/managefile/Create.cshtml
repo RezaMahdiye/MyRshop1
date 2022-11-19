@@ -1,0 +1,62 @@
+﻿@page
+@model MyRshop.Pages.Admin.managefile.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>FileModel</h4>
+<hr />
+<d class="row">
+   
+    <form method="post">
+        <dl class="dl-horizontal">
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+           <dd >
+                <label asp-for="FileModel.Name" class="control-label"></label>
+           </dd>
+           <dt>
+               <input asp-for="FileModel.Name" class="form-control" />
+               <span asp-validation-for="FileModel.Name" class="text-danger"></span>
+           </dt>
+           
+               <dd><label asp-for="FileModel.Description" class="control-label"></label></dd> 
+               <dt>
+                   <input asp-for="FileModel.Description" class="form-control" />
+                   <span asp-validation-for="FileModel.Description" class="text-danger"></span>
+               </dt>
+
+          
+       
+               <dd><label asp-for="FileModel.TimeSystem" class="control-label"></label></dd> 
+               <dt>
+                   <input asp-for="FileModel.TimeSystem" class="form-control" />
+                   <span asp-validation-for="FileModel.TimeSystem" class="text-danger"></span>
+               </dt>
+
+       
+
+           
+              <dd><label asp-for="FileModel.myFile1">انتخاب فایل:</label></dd>  
+              <dt>
+                  <input asp-for="FileModel.myFile1" value="انتخاب فایل" />
+                  <span asp-validation-for="FileModel.myFile1"></span>
+              </dt>
+
+
+           <dt>
+               <input type="submit" value="Create" class="btn btn-primary" />
+           </dt>
+                
+           
+        </dl>
+    </form>
+    
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+

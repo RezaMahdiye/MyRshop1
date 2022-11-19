@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<h1>_layout2</h1>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <a asp-page="Index" asp-page-handler="Menu1">Menu 1</a> |
+    <a asp-page="Index" asp-page-handler="Menu2">Menu 2</a> |
+    <a asp-page="Index" asp-page-handler="Menu3">Menu 3</a>
+
+    <br><br>
+
+    @*<fieldset>
+            <legend>Form 1</legend>
+            <form method="post" asp-page="Index" asp-page-handler="Submit1">
+                <input type="submit" value="Submit 1" />
+            </form>
+        </fieldset>
+
+        <fieldset>
+            <legend>Form 1</legend>
+            <form method="post" asp-page="Index" asp-page-handler="Submit2">
+                <input type="submit" value="Submit 2" />
+            </form>
+        </fieldset>
+
+        <fieldset>
+            <legend>Form 1</legend>
+            <form method="post" asp-page="Index" asp-page-handler="Submit3">
+                <input type="submit" value="Submit 3" />
+            </form>
+        </fieldset>*@
+
+    <br />
+    @Model.Msg
+    <main>
+        @RenderBody()
+    </main>
+
+    @RenderSection("Scripts", false);
+</body>
+</html>

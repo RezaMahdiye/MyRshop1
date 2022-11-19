@@ -1,0 +1,123 @@
+﻿@model MyRshop.Models.HirringModel
+
+<script src="~/Calender/jalalidatepicker.js"></script>
+<link rel="stylesheet" href="~/Calender/jalalidatepicker.css" />
+<form class="form-horizontal" asp-controller="BlogAccounting" asp-action="IntroducingAccountant">
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">نوع تخصص:</label>
+        <div class="col-sm-7">
+            <select asp-for="Spetial" asp-items="Html.GetEnumSelectList<SpetialType>()" class="form-control" id="testSelect" placeholder="نوع تخصص">
+                <option value="0">حسابداری</option>
+                <option value="1">ICDL</option>
+                <option value="2">فتوشاپ</option>
+                <option value="3">برنامه نویس</option>
+                <option value="4">طراحی سایت</option>
+                <option value="5">تحلیل تکنیکال بورس</option>
+                <option value="6">تحلیل بنیادی بورس</option>
+            </select>
+            <span asp-validation-for="Spetial" class="text-danger"></span>
+        </div>
+
+    </div>
+    @if (ViewBag.ShowBtn==1)
+    {
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">نام و نام خانوادگی:</label>
+            <div class="col-sm-7">
+                <input asp-for="FamilyName" type="text" class="form-control" id="inputEmail3" placeholder="نام و نام خانوادگی">
+                <span asp-validation-for="FamilyName" class="text-danger"></span>
+            </div>
+        </div>
+    }
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">تاریخ تولد:</label>
+        <div class="col-sm-7">
+            <input asp-for="Birthday" data-jdp placeholder="کلیک کنید" class="form-control" data-jdp-only-date />
+            <span asp-validation-for="Birthday" class="text-danger"></span>
+            <script>
+                jalaliDatepicker.startWatch({
+                    minDate: "attr",
+                    maxDate: "attr",
+                    time: true,
+                    changeMonthRotateYear: true,
+                    showTodayBtn: true,
+                    showEmptyBtn: true,
+                    topSpace: 10,
+                    bottomSpace: 30,
+                    dayRendering(opt, input) {
+                        return {
+                            isHollyDay: opt.day == 1
+                        }
+                    }
+                });
+
+                document.getElementById("aaa").addEventListener("jdp:change", function (e) { console.log(e) });
+            </script>
+        </div>
+    </div>
+    @if (ViewBag.ShowBtn==1)
+    {
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">آدرس:</label>
+            <div class="col-sm-7">
+                <input asp-for="Address" type="text" class="form-control" id="inputEmail3" placeholder="آدرس">
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">تلفن:</label>
+            <div class="col-sm-7">
+                <input asp-for="TellPhon" type="tel" class="form-control" id="inputEmail3" placeholder="تلفن">
+                <span asp-validation-for="TellPhon" class="text-danger"></span>
+            </div>
+        </div>
+    }
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">سابقه کار:</label>
+            <div class="col-sm-7">
+                <textarea asp-for="Experience" type="text" class="form-control" id="inputEmail3" placeholder="مهارت های شما"></textarea>
+                <span asp-validation-for="Experience" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">جنسیت:</label>
+            <div class="col-sm-7">
+                <input name="Sex" type="radio" checked="checked" value="true"/><label>مرد</label>
+                <input name="Sex" type="radio" value="false"/><label> زن</label>
+                <span asp-validation-for="Sex" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail32" class="col-sm-2 control-label">وضعیت تاهل:</label>
+            <div class="col-sm-7">
+
+                <input name="Marital" type="radio" value="true" checked="checked"/><label>مجرد</label>
+
+                <input name="Marital" type="radio" value="false"/> <label>متاهل</label>
+                <span asp-validation-for="Marital" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">حقوق پیشنهادی:</label>
+            <div class="col-sm-7">
+                <select asp-for="SalaryPrice" asp-items="Html.GetEnumSelectList<Salary>()" class="form-control" id="inputEmail3" placeholder="حقوق پیشنهادی">
+                    <option selected="selected" value="مطابق با قانون کار"></option>
+                    @*<option value="مطابق با قانون کار">مطابق با قانون کار</option>
+                        <option value="توافقی">توافقی</option>*@
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">اسم نرم افزارها:<br /><p style="font-size:12px">اسم برنامه هایی که با آن کار می کنید و مهارت دارید.</p></label>
+            <div class="col-sm-7">
+                <input asp-for="SoftwareName" type="text" class="form-control" id="inputEmail3" placeholder="اسم نرم افزار">
+                <span asp-validation-for="SoftwareName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">ثبت اطلاعات</button>
+            </div>
+        </div>
+    </form>
+

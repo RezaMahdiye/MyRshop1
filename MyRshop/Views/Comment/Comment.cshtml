@@ -1,0 +1,121 @@
+﻿@model CommentViewModel
+
+@{
+        ViewData["Title"] = "Comment";
+    }
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="chat, user, comments, wide" />
+
+    <title>پیام ها</title>
+
+    <link rel="stylesheet" href="~/Comment/styles.css">
+
+</head>
+
+<body>
+
+    <ul class="comment-section">
+
+        @foreach (var item in Model.CommentList)
+        {
+            @if (item.IsResponsed)
+            {
+                <li class="comment user-comment">
+
+                    <div class="info">
+                        <a href="#">@*@item.users.Email*@  @Html.DisplayFor(modelItem => item.user.Email)</a>
+                        <span>@item.Time</span>
+                    </div>
+
+                    <a class="avatar" href="#">
+                        <img src="~/Comment/images/images.jpg" width="35" alt="Profile Avatar" title="Anie Silverston" />
+                    </a>
+
+                    <p style="font-size:18px">@item.Question</p>
+
+                </li>
+
+                <li class="comment author-comment">
+
+                    <div class="info">
+                        <a href="#">مدیر</a>
+                        <span>لحظاتی پیش</span>
+                    </div>
+
+                    <a class="avatar" href="#">
+                        <img src="~/Comment/images/avatar_author.jpg" width="35" alt="Profile Avatar" title="Jack Smith" />
+                    </a>
+
+                    <p style="font-size:18px">@item.Answer</p>
+
+                </li>
+            }
+            else
+            {
+                @*<li class="comment author-comment">
+
+                    <div class="info">
+                        <a href="#">مدیر</a>
+                        <span>لحضاتی پیش</span>
+                    </div>
+
+                    <a class="avatar" href="#">
+                        <img src="~/Comment/images/avatar_author.jpg" width="35" alt="Profile Avatar" title="Jack Smith" />
+                    </a>
+
+                    <h5>پیام شما در حال برسی است لطفا صبور باشید تا 24 ساعت آینده به شما پاسخ می دهیم!</h5>
+
+                </li>*@
+            }
+
+        }
+
+
+        <li class="write-new">
+            @if (User.Identity.IsAuthenticated)
+            {
+               
+                <partial name="../Comment/sendcomment" model="Model.Comment"/>
+
+                @*<form asp-controller="Comment" asp-action="Comment2" method="post">
+
+
+                    <textarea asp-for="@Model." placeholder="پیامتان را بنویسید..." name="comment"></textarea>
+
+                    <div>
+                        <img src="~/Comment/images/images.jpg" width="35" alt="Profile of Bradley Jones" title="Bradley Jones" />
+                        <button type="submit">ارسال</button>
+                    </div>
+
+                </form>*@
+            }
+            else
+            {
+                <h2>برای ارسال پیام ابتدا وارد شوید:</h2>
+                <h4>
+                    <i class="glyphicon glyphicon-log-in"></i><a asp-area="" asp-controller="Account" asp-action="Login">ورود</a>
+                </h4>
+                <h4>
+                    <i style="padding-top:30px;" class="glyphicon glyphicon-book"></i><a asp-area="" asp-controller="Account" asp-action="Register">ثبت نام</a>
+                </h4>
+            }
+        </li>
+
+    </ul>
+
+    <footer>
+        <a class="tz" href="http://tutorialzine.com/2015/11/using-flexbox-to-create-a-responsive-comment-section/">Using Flexbox to Create a Responsive Comment Section</a>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+﻿@model Comment
+@{
+    ViewData["Title"] = "sendcomment";
+}
+
+<h1>ارسال پیام</h1>
+<br />
+
+<form asp-controller="Comment" asp-action="Comment2" method="post">
+
+    <textarea asp-for="Question" placeholder="پیامتان را بنویسید..."></textarea>
+    @*<input  asp-for="@Model.user.UserId" />*@
+    <span asp-validation-for="Question" class="text-danger"></span>
+    <div>
+        <img src="~/Comment/images/images.jpg" width="35" alt="Profile of Bradley Jones" title="Bradley Jones" />
+        <button value="" type="submit">ارسال</button>
+    </div>
+
+</form>

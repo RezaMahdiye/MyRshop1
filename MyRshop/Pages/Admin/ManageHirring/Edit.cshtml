@@ -1,0 +1,80 @@
+﻿@page
+@model MyRshop.Pages.Admin.ManageHirring.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>HirringModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="HirringModel.Id" />
+            <div class="form-group">
+                <label asp-for="HirringModel.FamilyName" class="control-label"></label>
+                <input asp-for="HirringModel.FamilyName" class="form-control" />
+                <span asp-validation-for="HirringModel.FamilyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HirringModel.Birthday" class="control-label"></label>
+                <input asp-for="HirringModel.Birthday" class="form-control" />
+                <span asp-validation-for="HirringModel.Birthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HirringModel.Address" class="control-label"></label>
+                <input asp-for="HirringModel.Address" class="form-control" />
+                <span asp-validation-for="HirringModel.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HirringModel.TellPhon" class="control-label"></label>
+                <input asp-for="HirringModel.TellPhon" class="form-control" />
+                <span asp-validation-for="HirringModel.TellPhon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HirringModel.Experience" class="control-label"></label>
+                <input asp-for="HirringModel.Experience" class="form-control" />
+                <span asp-validation-for="HirringModel.Experience" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HirringModel.Marital" /> @Html.DisplayNameFor(model => model.HirringModel.Marital)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HirringModel.Sex" /> @Html.DisplayNameFor(model => model.HirringModel.Sex)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="HirringModel.SalaryPrice" class="control-label"></label>
+                <select asp-for="HirringModel.SalaryPrice" class="form-control"></select>
+                <span asp-validation-for="HirringModel.SalaryPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HirringModel.Spetial" class="control-label"></label>
+                <select asp-for="HirringModel.Spetial" class="form-control"></select>
+                <span asp-validation-for="HirringModel.Spetial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HirringModel.SoftwareName" class="control-label"></label>
+                <input asp-for="HirringModel.SoftwareName" class="form-control" />
+                <span asp-validation-for="HirringModel.SoftwareName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

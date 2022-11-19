@@ -1,0 +1,85 @@
+﻿@model ClassProgramViewModel
+@{
+    ViewData["Title"] = "Acounting";
+}
+
+    <h1>@Model.Product.Name</h1>
+<div class="bs-example wow fadeInLeft animated animated" data-wow-delay=".5s" data-example-id="simple-table" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+    <form class="form-horizontal">
+        <table class="table">
+            <caption>برنامه کلاسی (روز های فرد و زوج شامل تمامی روز های غیر تعطیل میباشد)</caption>
+            <thead>
+                <tr>
+                    <th>انتخاب</th>
+                    <th>روز های هفته</th>
+                    <th>نام دوره</th>
+                    <th>ساعت کلاسی</th>
+                    <th>تاریخ شروع</th>
+                    <th>استاد</th>
+                    <th>قیمت</th>
+                    <th>ساعت اموزش</th>
+                    <th>ظرفیت</th>
+
+                </tr>
+            </thead>
+
+
+            <tbody>
+                @foreach (var item in Model.ClassProgram)
+                {
+                    <tr>
+                        <td>
+                            <div class="radio">
+                                <label><input value="@item.Id" type="radio" id='regular' name="_optradio"></label>
+                            </div>
+                        </td>
+                        <td>@item.Days</td>
+                        <td>@Model.Product.Name</td>
+                        <td>@item.BiginEndTime</td>
+                        <td>@item.BiginDate</td>
+                        <td>@item.TeacherName</td>
+                        <td>@Model.Product.Item.Price</td>
+                        <td>@item.HoleTime</td>
+                        <td>@item.Capacity</td>
+
+                    </tr>
+                }
+            </tbody>
+
+            
+        </table>
+        <div class="col-md-2"></div>
+        <a id="addtocart" class="col-md-8 btn btn-primary"
+           width="400px" value="افزودن به سبد خرید">افزودن به سبد خرید</a>
+
+        @*<a class="btn btn-primary"
+        asp-controller="Home"
+        asp-action="AddToCart"
+        asp-route-itemId="@Model.Product.ItemId">افزودن به سبد خرید</a>*@
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#addtocart").on('click', function () {
+            selected_value = $("input[name='_optradio']:checked").val();
+            if (selected_value === undefined || selected_value.length === 0) {
+                alert("یکی از کلاسها را انتخاب کنید");
+                return;
+            }
+            location.href="/AddToCart?classId=" + selected_value+"&itemId="+@Model.Product.ItemId;
+        });
+    });
+    //    $('#radio_box').change(function () {
+    //        selected_value = $("input[name='contacts']:checked").val();
+    //        alert(selected_value);
+    //    });
+
+    //$('document').ready(function () {
+    //    alert();
+    //    $()
+    //    var selectId = $('input[name="_optradio]:checked"').val();
+
+
+
+</script>

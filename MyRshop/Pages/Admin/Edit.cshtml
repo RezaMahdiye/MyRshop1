@@ -1,0 +1,75 @@
+﻿@page
+@model MyRshop.Pages.Admin.EditModel
+@{
+    ViewData["Title"] = "ویرایش";
+}
+
+<h1>ویرایش دوره</h1>
+<hr />
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Product.Id" />
+    <dl class="dl-horizontal">
+        <dd><label asp-for="Product.Name">نام دوره:</label></dd>
+        <dt>
+            <input class="form-control" asp-for="Product.Name" />
+            <span asp-validation-for="Product.Name"></span>
+        </dt>
+        <dd><label asp-for="Product.Description">توضیحات:</label></dd>
+        <dt>
+            <textarea asp-for="Product.Description" class="form-control"></textarea>
+            <span asp-validation-for="Product.Description"></span>
+        </dt>
+        <dd><label asp-for="Product.Price">قیمت:</label></dd>
+        <dt>
+            <input asp-for="Product.Price" class="form-control" />
+            <span asp-validation-for="Product.Price"></span>
+        </dt>
+        <dd><label asp-for="Product.QuantityInStuck">ظرفیت:</label></dd>
+        <dt>
+            <input asp-for="Product.QuantityInStuck" class="form-control" />
+            <span asp-validation-for="Product.QuantityInStuck"></span>
+        @*</dt>
+        <dd><label asp-for="Product.BiginEndTime">ساعت شروع و پایان:</label></dd>
+        <dt>
+            <input asp-for="Product.BiginEndTime" class="form-control" />
+            <span asp-validation-for="Product.BiginEndTime"></span>
+        </dt>
+        <dd><label asp-for="Product.BiginDate">تاریخ شروع دوره:</label></dd>
+        <dt>
+            <input asp-for="Product.BiginDate" class="form-control" />
+            <span asp-validation-for="Product.BiginDate"></span>
+        </dt>
+        <dd><label asp-for="Product.Days">روز های هفته:</label></dd>
+        <dt>
+            <input asp-for="Product.Days" class="form-control" />
+            <span asp-validation-for="Product.Days"></span>
+        </dt>
+        <dd><label asp-for="Product.HoleTime">کل ساعات دوره:</label></dd>
+        <dt>
+            <input asp-for="Product.HoleTime" class="form-control" />
+            <span asp-validation-for="Product.HoleTime"></span>
+        </dt>
+        <dd><label asp-for="Product.TeacherName">نام مدرس:</label></dd>
+        <dt>
+            <input asp-for="Product.TeacherName" class="form-control" />
+            <span asp-validation-for="Product.TeacherName"></span>*@
+        </dt>
+        <dd><label asp-for="Product.picture">عکس:</label></dd>
+        <dt>
+
+            <input asp-for="Product.picture" value="انتخاب عکس" />
+            <span asp-validation-for="Product.picture"></span>
+            <br />
+            <label>فقط عکس با پسوند .jpg ورارد کنید.</label>
+        </dt>
+        <dd></dd>
+        <dt>
+            <input type="submit" class="btn btn-success" value="ویرایش" />
+        </dt>
+    </dl>
+
+
+
+</form>
+
+

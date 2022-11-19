@@ -1,0 +1,23 @@
+﻿    <form action="/Account/Login" method="post" novalidate="novalidate">
+            <div class="form-group">
+                <label class="control-label" for="name">نام:</label>
+                <input class="form-control" type="text" data-val="true" data-val-maxlength="The field نام: must be a string or array type with a maximum length of '50'." data-val-maxlength-max="50" data-val-required="لطفا نام را قرار دهید" id="name" maxlength="50" name="name">
+                <span class="text-danger field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="Email">تلفن:</label>
+                <input class="form-control" type="email" data-val="true" data-val-email="The ایمیل: field is not a valid e-mail address." data-val-maxlength="The field ایمیل: must be a string or array type with a maximum length of '300'." data-val-maxlength-max="300" data-val-required="لطفاایمیل: را قرار دهید" id="Email" maxlength="300" name="Email" value="">
+                <span class="text-danger field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+            </div>
+
+            <div class="form-group push-">
+                <div>  <label class="control-label" for="comment">توضیح شما:</label></div>
+
+                <textarea class="form-control input-block-level" tabindex="4" rows="7" cols="70" id="comment" name="comment" placeholder="پیامتان را در اینجا بنویسید ..." required></textarea>
+                <span class="text-danger field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ثبت درخواست" class="btn btn-primary">
+            </div>
+            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8NY7_jGZLw5IrHSRLrn5LhEieC3H2Y7U1Zr5YfEsIgXyUYkk4VfrSD7GGNRRT1jCS0k2WPnZRGlylmQga-z_ykJ1r16ga0cnFbMfGxNWglOiwzKP2B3XesU3vBlPbilUeAKZgDn8feq66bmdPL6ZEvg"><input name="RememberMe" type="hidden" value="false">
+        </form>
