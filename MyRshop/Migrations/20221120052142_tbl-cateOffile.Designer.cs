@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyRshop.Data;
 
 namespace MyRshop.Migrations
 {
     [DbContext(typeof(MyRshopContext))]
-    partial class MyRshopContextModelSnapshot : ModelSnapshot
+    [Migration("20221120052142_tbl-cateOffile")]
+    partial class tblcateOffile
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

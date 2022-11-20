@@ -21,7 +21,17 @@ namespace MyRshop.Models
         [Display(Name = "تاریخ ایجاد:")]
         public DateTime TimeSystem { set; get; }
         [ForeignKey("userId")]
+        [Display(Name = "کاربر:")]
         public int userId { get; set; }
         public Users Users { get; set; }
+        [ForeignKey("CateId")]
+        [Required(ErrorMessage = "لطفا دسته فایل را وارد کنید.")]
+        [Display(Name = "گروه دسته بندی:")]
+        public virtual int CateId { set; get; }
+        public virtual CategoryOfFile CategoryOfFile { set; get; }
+        [Required(ErrorMessage = "لطفا  فایل را وارد کنید.")]
+        [NotMapped]
+        [Display(Name = "فایل:")]
+        public IFormFile myFile1 { set; get; }
     }
 }

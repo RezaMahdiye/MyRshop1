@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using MyRshop.Data;
 using MyRshop.Models;
 
-namespace MyRshop.Pages.Admin.managefile
+namespace MyRshop.Pages.Admin.ManageCateOfFile
 {
     public class CreateModel : PageModel
     {
@@ -22,12 +22,11 @@ namespace MyRshop.Pages.Admin.managefile
 
         public IActionResult OnGet()
         {
-            ViewData["CateId"] = new SelectList(_context.CategoryOfFiles, "Id", "Name");
             return Page();
         }
 
         [BindProperty]
-        public FileModel FileModel { get; set; }
+        public CategoryOfFile CategoryOfFile { get; set; }
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
@@ -38,20 +37,15 @@ namespace MyRshop.Pages.Admin.managefile
                 return Page();
             }
 
-            _context.FileModel.Add(FileModel);
+            _context.CategoryOfFiles.Add(CategoryOfFile);
             await _context.SaveChangesAsync();
 
-            if (FileModel.myFile1?.Length > 0)
+            if (CategoryOfFile.catePic?.Length  > 0)
             {
-
-
-                string filePath = Path.Combine(Directory.GetCurrentDirectory(),
-                    "wwwroot",
-                    "Files",
-                    FileModel.id + Path.GetExtension(FileModel.myFile1.FileName));//Product.picture.FileName Product.picture.FileName
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                string filepath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Files", "Category", CategoryOfFile.Id + Path.GetExtension(CategoryOfFile.catePic.FileName));
+                using (var stream=new FileStream(filepath, FileMode.Create))
                 {
-                    FileModel.myFile1.CopyTo(stream);
+                    CategoryOfFile.catePic.CopyTo(stream);
                 }
 
             }

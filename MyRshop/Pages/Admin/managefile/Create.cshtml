@@ -9,54 +9,47 @@
 
 <h4>FileModel</h4>
 <hr />
-<d class="row">
-   
-    <form method="post">
-        <dl class="dl-horizontal">
-            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
-           <dd >
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
                 <label asp-for="FileModel.Name" class="control-label"></label>
-           </dd>
-           <dt>
-               <input asp-for="FileModel.Name" class="form-control" />
-               <span asp-validation-for="FileModel.Name" class="text-danger"></span>
-           </dt>
-           
-               <dd><label asp-for="FileModel.Description" class="control-label"></label></dd> 
-               <dt>
-                   <input asp-for="FileModel.Description" class="form-control" />
-                   <span asp-validation-for="FileModel.Description" class="text-danger"></span>
-               </dt>
+                <input asp-for="FileModel.Name" class="form-control" />
+                <span asp-validation-for="FileModel.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FileModel.Description" class="control-label"></label>
+                <input asp-for="FileModel.Description" class="form-control" />
+                <span asp-validation-for="FileModel.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FileModel.TimeSystem" class="control-label"></label>
+                <input asp-for="FileModel.TimeSystem" class="form-control" />
+                <span asp-validation-for="FileModel.TimeSystem" class="text-danger"></span>
+            </div>
 
-          
-       
-               <dd><label asp-for="FileModel.TimeSystem" class="control-label"></label></dd> 
-               <dt>
-                   <input asp-for="FileModel.TimeSystem" class="form-control" />
-                   <span asp-validation-for="FileModel.TimeSystem" class="text-danger"></span>
-               </dt>
+            <div class="form-group">
+                <label asp-for="FileModel.CateId" class="control-label"></label>
+                <select asp-for="FileModel.CateId" class="form-control" asp-items="ViewBag.CateId"></select>
 
-       
-
-           
-              <dd><label asp-for="FileModel.myFile1">انتخاب فایل:</label></dd>  
-              <dt>
-                  <input asp-for="FileModel.myFile1" value="انتخاب فایل" />
-                  <span asp-validation-for="FileModel.myFile1"></span>
-              </dt>
-
-
-           <dt>
-               <input type="submit" value="Create" class="btn btn-primary" />
-           </dt>
-                
-           
-        </dl>
-    </form>
-    
+            </div>
+            <div class="form-group">
+                <label asp-for="FileModel.myFile1">انتخاب فایل:</label>
+                <input type="file" asp-for="FileModel.myFile1" />
+                <span asp-validation-for="FileModel.myFile1"></span>
+            </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+        </form>
+    </div>
 </div>
 
 <div>
     <a asp-page="Index">Back to List</a>
 </div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -4,15 +4,15 @@
 }
     <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <h1>دانلود فایل ها</h1>
-<div class="row">
-    <div dir="rtl" class="col-md-4">
+<div dir="rtl" class="row">
+    @*<div  class="col-md-4">
         <h2 class="title" style="color:deepskyblue;padding-top:20px">آموزش حسابداری</h2>
         <p style="font-size:12px;padding-bottom:20px;">زمان ایجاد:12:56</p>
         <div style="padding-bottom:20px;" class="text-body">
             متن ساختگی است متن ساختگی اس متن ساختگی اس متن ساختگی اس متن ساختگی اس متن ساختگی اس متن ساختگی استتتتتت متن ساختگی است
         </div>
         <input type="button" dir="ltr" href="#" value="دانلود" class="btn btn-success" style="width:48px;height:38px;" />
-    </div>
+    </div>*@
     @foreach (var item in Model)
     {
         <div dir="rtl" class="col-md-4">
@@ -21,7 +21,11 @@
             <div style="padding-bottom:20px;" class="text-body">
                 @item.Description
             </div>
-            <input type="button" dir="ltr" href="#" value="دانلود" class="btn btn-success" style="width:48px;height:38px;" />
+            <a type="button" asp-controller="Downloads"
+               asp-action="DownloadFile"
+               asp-route-id="@item.id"
+               dir="ltr"  class="btn btn-success" 
+               style="width:48px;height:38px;">دانلود</a>
         </div>
     }
 

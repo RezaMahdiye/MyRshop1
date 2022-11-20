@@ -22,6 +22,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.FileModel[0].TimeSystem)
             </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.FileModel[0].userId)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.FileModel[0].CateId)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -36,6 +42,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TimeSystem)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Users.Email)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryOfFile.Name)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |

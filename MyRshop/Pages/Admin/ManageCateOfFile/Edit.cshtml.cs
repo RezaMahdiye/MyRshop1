@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using MyRshop.Data;
 using MyRshop.Models;
 
-namespace MyRshop.Pages.Admin.managefile
+namespace MyRshop.Pages.Admin.ManageCateOfFile
 {
     public class EditModel : PageModel
     {
@@ -22,21 +22,18 @@ namespace MyRshop.Pages.Admin.managefile
         }
 
         [BindProperty]
-        public FileModel FileModel { get; set; }
+        public CategoryOfFile CategoryOfFile { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            ViewData["CateId"] = new SelectList(_context.CategoryOfFiles, "Id", "Name");
-      
             if (id == null)
             {
                 return NotFound();
             }
 
+            CategoryOfFile = await _context.CategoryOfFiles.FirstOrDefaultAsync(m => m.Id == id);
 
-            FileModel = await _context.FileModel.FirstOrDefaultAsync(m => m.id == id);
-
-            if (FileModel == null)
+            if (CategoryOfFile == null)
             {
                 return NotFound();
             }
@@ -52,7 +49,7 @@ namespace MyRshop.Pages.Admin.managefile
                 return Page();
             }
 
-            _context.Attach(FileModel).State = EntityState.Modified;
+            _context.Attach(CategoryOfFile).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +57,8 @@ namespace MyRshop.Pages.Admin.managefile
                 string filepath = Path.Combine(Directory.GetCurrentDirectory(),
                  "wwwroot",
                 "Files",
-                FileModel.id + Path.GetExtension(FileModel.myFile1.FileName));
+                "Category",
+                CategoryOfFile.Id + Path.GetExtension(CategoryOfFile.catePic.FileName));
                 if (System.IO.File.Exists(filepath))
                 {
                     System.IO.File.Delete(filepath);
@@ -68,14 +66,14 @@ namespace MyRshop.Pages.Admin.managefile
                 //Then Add New File pic
                 using (var stream = new FileStream(filepath, FileMode.Create))
                 {
-                    FileModel.myFile1.CopyTo(stream);
+                    CategoryOfFile.catePic.CopyTo(stream);
                 }
 
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FileModelExists(FileModel.id))
+                if (!CategoryOfFileExists(CategoryOfFile.Id))
                 {
                     return NotFound();
                 }
@@ -88,9 +86,9 @@ namespace MyRshop.Pages.Admin.managefile
             return RedirectToPage("./Index");
         }
 
-        private bool FileModelExists(int id)
+        private bool CategoryOfFileExists(int id)
         {
-            return _context.FileModel.Any(e => e.id == id);
+            return _context.CategoryOfFiles.Any(e => e.Id == id);
         }
     }
 }

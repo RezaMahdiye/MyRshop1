@@ -64,6 +64,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="3.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
     <PackageReference Include="ZarinPalSandbox" Version="2.0.4" />
@@ -71,7 +72,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\.vs\Classic_Style\v16\" />
-    <Folder Include="wwwroot\Files\" />
   </ItemGroup>
 
 </Project>

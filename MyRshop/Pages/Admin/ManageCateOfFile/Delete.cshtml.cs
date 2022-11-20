@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using MyRshop.Data;
 using MyRshop.Models;
 
-namespace MyRshop.Pages.Admin.managefile
+namespace MyRshop.Pages.Admin.ManageCateOfFile
 {
     public class DeleteModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace MyRshop.Pages.Admin.managefile
         }
 
         [BindProperty]
-        public FileModel FileModel { get; set; }
+        public CategoryOfFile CategoryOfFile { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,9 +30,9 @@ namespace MyRshop.Pages.Admin.managefile
                 return NotFound();
             }
 
-            FileModel = await _context.FileModel.FirstOrDefaultAsync(m => m.id == id);
+            CategoryOfFile = await _context.CategoryOfFiles.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (FileModel == null)
+            if (CategoryOfFile == null)
             {
                 return NotFound();
             }
@@ -46,22 +46,21 @@ namespace MyRshop.Pages.Admin.managefile
                 return NotFound();
             }
 
-            FileModel = await _context.FileModel.FindAsync(id);
+            CategoryOfFile = await _context.CategoryOfFiles.FindAsync(id);
 
-            if (FileModel != null)
+            if (CategoryOfFile != null)
             {
-                _context.FileModel.Remove(FileModel);
+                _context.CategoryOfFiles.Remove(CategoryOfFile);
                 await _context.SaveChangesAsync();
 
                 string filepath = Path.Combine(Directory.GetCurrentDirectory(),
-                  "wwwroot",
-                  "Files",
-                  FileModel.id.ToString()); /*+ Path.GetExtension(FileModel.myFile1.FileName)*/
-                string fex = ".pdf";/*Path.GetExtension(Path.GetExtension(filepath));*/ /*Path.GetExtension(filepath);*/
-                
-                if (System.IO.File.Exists(filepath+fex))
+                    "wwwroot",
+                    "Files",
+                    "Category",
+                    CategoryOfFile.Id + Path.GetExtension(CategoryOfFile.catePic.FileName));
+                if (System.IO.File.Exists(filepath))
                 {
-                    System.IO.File.Delete(filepath + fex);
+                    System.IO.File.Delete(filepath);
                 }
             }
 

@@ -24,14 +24,15 @@ namespace MyRshop.Controllers
         public IActionResult Register()
         {
             var model = new RegisterViewModel();
+           
             return View(model);
         }
         [HttpPost]
        // [Route("Register")]
-
+   
         public IActionResult Register(RegisterViewModel Register)
         {
-
+           // encode(Register.Password);
             if (!ModelState.IsValid)
             {
                 return View(Register);

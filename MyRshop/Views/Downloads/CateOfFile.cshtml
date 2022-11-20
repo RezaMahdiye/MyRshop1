@@ -1,0 +1,23 @@
+﻿@model IEnumerable<CategoryOfFile>
+@{
+    ViewData["Title"] = "CateOfFile";
+}
+<!DOCTYPE html>
+<html>
+<h1>گروه فایل های آموزشی</h1>
+<hr />
+<br />
+<head>
+    <meta name="apple-mobile-web-app-title" content="فایل های اموزشی حسابداری و کامپیوتر" />
+    <meta name="description" content="فایل های اموزشی حسابداری و کامپیوتر,pdf,جزوه"
+    
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <partial name="_BoxFiles" model="@item"></partial>
+            }
+        </div>
+</div>
+</head>
+</html>

@@ -10,6 +10,7 @@ namespace MyRshop.Data
 
 
         }
+        public DbSet<CategoryOfFile> CategoryOfFiles { set; get; }
         public DbSet<FileModel> FileModel { set; get; }
         public DbSet<Comment>Comment { set; get; }
         public DbSet<ClassProgram> ClassProgram { set; get; }

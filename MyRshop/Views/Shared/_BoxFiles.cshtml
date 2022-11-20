@@ -1,0 +1,35 @@
+﻿@model CategoryOfFile
+@{
+    ViewData["Title"] = "_BoxFiles";
+}
+
+<h2>@Model.Name</h2>
+
+<div class="col col-md-4">
+    
+        <div class="img-layer">
+            <a title="@Model.Name" href="#">
+                <i class="zmdi zmdi-more-vert"></i>
+            </a>
+            <img class="" src="~/Files/Category/@(Model.Id).jpg" height="260" width="300" data-src="/images/@(Model.Id).jpg" alt="دانلود فایل">
+        </div>
+        <h3>
+            <a asp-action="DownloadsIndex"
+               asp-controller="downloads"
+               asp-route-id="@Model.Id">دانلود فایل های @Model.Name </a>
+        </h3>
+        <div class="detail">
+
+            <div class="bottom">
+                <span class="time">
+                    @* مدرس:@Model.ClassProgram.TeacherName*@
+                    @*<i>  زمان ایجاد:@Model.TimeSystem </i>*@
+                </span>
+                <span class="price">  @*<i>  قیمت:@Model.Item.Price </i>*@ </span>
+            </div>
+
+        </div>
+
+</div>
+
+

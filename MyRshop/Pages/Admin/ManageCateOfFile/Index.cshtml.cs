@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MyRshop.Data;
 using MyRshop.Models;
 
-namespace MyRshop.Pages.Admin.managefile
+namespace MyRshop.Pages.Admin.ManageCateOfFile
 {
     public class IndexModel : PageModel
     {
@@ -19,11 +19,11 @@ namespace MyRshop.Pages.Admin.managefile
             _context = context;
         }
 
-        public IList<FileModel> FileModel { get;set; }
+        public IList<CategoryOfFile> CategoryOfFile { get;set; }
 
         public async Task OnGetAsync()
         {
-            FileModel = await _context.FileModel.Include(f=>f.CategoryOfFile).ToListAsync();
+            CategoryOfFile = await _context.CategoryOfFiles.ToListAsync();
         }
     }
 }
