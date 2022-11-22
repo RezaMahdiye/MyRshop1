@@ -3,7 +3,7 @@
     ViewData["Title"] = "سبد خرید";
 }
 
-@if (Model != null)
+@if (Model.orderDetails.Count!=0)
 {
     <table class="table table-striped">
         <thead class="thead-dark">
@@ -52,5 +52,5 @@
 }
 else
 {
-    <div class="alert alert-danger">فاکتوری نیست</div>
+    <div class="alert alert-danger">سفارش آموزشی برای شمااین دوره وجود ندارد!</div>
 }

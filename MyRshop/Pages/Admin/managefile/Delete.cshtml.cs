@@ -50,18 +50,21 @@ namespace MyRshop.Pages.Admin.managefile
 
             if (FileModel != null)
             {
+                string extention = FileModel.Extention;
                 _context.FileModel.Remove(FileModel);
                 await _context.SaveChangesAsync();
+               
+
 
                 string filepath = Path.Combine(Directory.GetCurrentDirectory(),
                   "wwwroot",
                   "Files",
                   FileModel.id.ToString()); /*+ Path.GetExtension(FileModel.myFile1.FileName)*/
-                string fex = ".pdf";/*Path.GetExtension(Path.GetExtension(filepath));*/ /*Path.GetExtension(filepath);*/
+            //    string fex = Path.GetExtension(FileModel.myFile1.FileName);/*Path.GetExtension(Path.GetExtension(filepath));*/ /*Path.GetExtension(filepath);*/
                 
-                if (System.IO.File.Exists(filepath+fex))
+                if (System.IO.File.Exists(filepath+ extention))
                 {
-                    System.IO.File.Delete(filepath + fex);
+                    System.IO.File.Delete(filepath + extention);
                 }
             }
 

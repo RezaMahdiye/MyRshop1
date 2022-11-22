@@ -15,7 +15,7 @@ namespace MyRshop.Pages.Admin.managefile
     public class EditModel : PageModel
     {
         private readonly MyRshop.Data.MyRshopContext _context;
-
+        public static string extention;
         public EditModel(MyRshop.Data.MyRshopContext context)
         {
             _context = context;
@@ -35,7 +35,7 @@ namespace MyRshop.Pages.Admin.managefile
 
 
             FileModel = await _context.FileModel.FirstOrDefaultAsync(m => m.id == id);
-
+            extention = FileModel.Extention;
             if (FileModel == null)
             {
                 return NotFound();
@@ -60,12 +60,18 @@ namespace MyRshop.Pages.Admin.managefile
                 string filepath = Path.Combine(Directory.GetCurrentDirectory(),
                  "wwwroot",
                 "Files",
-                FileModel.id + Path.GetExtension(FileModel.myFile1.FileName));
+                FileModel.id + extention); /*Path.GetExtension(FileModel.myFile1.FileName));*/
                 if (System.IO.File.Exists(filepath))
                 {
                     System.IO.File.Delete(filepath);
                 }
                 //Then Add New File pic
+                string s = Path.GetExtension(FileModel.myFile1.FileName);
+                FileModel.Extention = s;
+                filepath = Path.Combine(Directory.GetCurrentDirectory(),
+                 "wwwroot",
+                "Files",
+                FileModel.id +s);
                 using (var stream = new FileStream(filepath, FileMode.Create))
                 {
                     FileModel.myFile1.CopyTo(stream);

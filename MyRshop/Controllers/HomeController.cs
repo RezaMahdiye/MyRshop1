@@ -61,7 +61,7 @@ namespace MyRshop.Controllers
             {
                 var product = _context.Products.Include(p => p.Item).SingleOrDefault(p => p.ItemId == itemId);
 
-                var classp = _context.ClassProgram.Include(p => p.Product).ThenInclude(c=>c.Item).SingleOrDefault(c => c.Id == classId);
+                var classp = _context.ClassProgram.Include(p => p.OrderDetails).ThenInclude(c=>c.Product).SingleOrDefault(c => c.Id == classId);
                 if (classp != null && product != null)
                 {
                     int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier).ToString());
@@ -73,7 +73,7 @@ namespace MyRshop.Controllers
                     var order = _context.Order.FirstOrDefault(o => o.UserId == userId && !o.IsFinaly);
                     if (order != null)
                     {
-                        var orderDetail = _context.OrderDetail.FirstOrDefault(d => d.OrderId == order.OrderId && d.ProductId == product.Id);
+                        var orderDetail = _context.OrderDetail.FirstOrDefault(d => d.OrderId == order.OrderId && d.ClassProgramId == classp.Id /*&& d.ProductId == product.Id*/);
                         if (orderDetail != null)
                         {
                              orderDetail.Count +=1;
@@ -107,13 +107,13 @@ namespace MyRshop.Controllers
                             Price =classp.Product.Item.Price,
                             ClassProgramId=classp.Id,
                             Count = 1,
-                            ProductId=product.Id
+                            ProductId = product.Id
 
                         });
                     }
                     _context.SaveChanges();
                     UpdateSumOrder(order.OrderId);
-                    return RedirectToAction("ShowCart",new {/*pId= product.Id, */cId = classp.Id });
+                    return RedirectToAction("ShowCart");/*new {cId = classp.Id }*/
                 }
                 return View("Error");
             }
@@ -134,7 +134,7 @@ namespace MyRshop.Controllers
 
         [Authorize]
 
-        public IActionResult ShowCart(int cId)
+        public IActionResult ShowCart(/*int cId*/)
         {
            
             int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier).ToString());
@@ -142,8 +142,9 @@ namespace MyRshop.Controllers
            var order = _context.Order.Where(o => o.UserId == userId && !o.IsFinaly)
                 .Include(o => o.OrderDetail)
                 //.ThenInclude(c => c.ClassProgram)
-                .ThenInclude(c=>c.Product)
-                .FirstOrDefault();
+
+    .ThenInclude(c=>c.Product)
+    .FirstOrDefault();
 
             //var orderDetail1 = _context.OrderDetail.Where(o => o.OrderId == order.OrderId).Include(o=>o.Order).ToList();
             //var order1 = _context.Order.Where(o => o.UserId == userId && !o.IsFinaly).Include(o => o.OrderDetail);
@@ -151,7 +152,7 @@ namespace MyRshop.Controllers
             //var OD = _context.OrderDetail.Include(o=>o.Order).Where(o => o.OrderId == order.OrderId).ToList();
             //var CP=_context.ClassProgram.Include(c=>c.Product).Where(c=>c.Id== cId).ToList();
 
-            var OD = _context.OrderDetail.Include(c=>c.ClassProgram).Where(c => c.ClassProgramId == cId).ToList();
+            var OD = _context.OrderDetail.Include(c=>c.ClassProgram)/*.Where(c => c.ClassProgramId == cId).*/.ToList();
             var vm = new OrderProductVm { 
            
                orderDetails=OD,     
@@ -164,13 +165,11 @@ namespace MyRshop.Controllers
         {
 
             var orderDetail = _context.OrderDetail.SingleOrDefault(o=>o.DetailId== DetailId);
-            int cId1 =int.Parse(orderDetail.ClassProgramId.ToString());
-           
             _context.Remove(orderDetail);
-
             _context.SaveChanges();
             UpdateSumOrder(orderDetail.OrderId);
-            return RedirectToAction("ShowCart",new{ cId=cId1});
+            //int cId1 = int.Parse(orderDetail.ClassProgramId.ToString());
+            return RedirectToAction("ShowCart");/*,new{ cId=cId1}*/
         }
 
         [Route("ContactUs")]

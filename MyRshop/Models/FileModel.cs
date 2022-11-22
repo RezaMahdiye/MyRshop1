@@ -20,6 +20,8 @@ namespace MyRshop.Models
         //     public IFormFile MyFile { set; get; }
         [Display(Name = "تاریخ ایجاد:")]
         public DateTime TimeSystem { set; get; }
+        [MaxLength(50)]
+        public string Extention { get; set; }
         [ForeignKey("userId")]
         [Display(Name = "کاربر:")]
         public int userId { get; set; }

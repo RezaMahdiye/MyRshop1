@@ -15,21 +15,36 @@
     </div>*@
     @foreach (var item in Model)
     {
-        <div dir="rtl" class="col-md-4">
-            <h2 class="title" style="color:deepskyblue;padding-top:20px">@item.Name</h2>
-            <p style="font-size:12px;padding-bottom:20px;">زمان ایجاد:@item.TimeSystem</p>
-            <div style="padding-bottom:20px;" class="text-body">
-                @item.Description
-            </div>
-            <a type="button" asp-controller="Downloads"
-               asp-action="DownloadFile"
-               asp-route-id="@item.id"
-               dir="ltr"  class="btn btn-success" 
-               style="width:48px;height:38px;">دانلود</a>
+    <div dir="rtl" class="col-md-4">
+        <h2 class="title" style="color:deepskyblue;padding-top:20px">@item.Name</h2>
+        <p style="font-size:12px;padding-bottom:20px;">زمان ایجاد:@item.TimeSystem</p>
+        <div style="padding-bottom:20px;" class="text-body">
+            @item.Description
         </div>
+    
+        <a  type="button" asp-controller="Downloads"
+           asp-action="DownloadFile"
+           asp-route-id="@item.id"
+           asp-route-extention="@item.Extention"
+           dir="ltr" class="btn btn-success"
+           style="width:48px;height:38px;">دانلود</a>
+    </div>
     }
 
 </div>
+
+@*<script>
+    $(document).ready(function () {
+        $("#down").on('click', function () {
+            selected_value = $("input[name='_optradio']:checked").val();
+            if (selected_value === undefined || selected_value.length === 0) {
+                alert("یکی از کلاسها را انتخاب کنید");
+                return;
+            }
+            location.href="/name?extention=" + selected_value+"&itemId="+@Model.Product.ItemId;
+        });
+    });
+    </script>*@
 @*<section class="post-information guide-box clearfix">
     <i class="icon-info"></i>
     <div class="content">

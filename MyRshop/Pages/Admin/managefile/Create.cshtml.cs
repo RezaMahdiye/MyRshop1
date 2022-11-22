@@ -37,18 +37,19 @@ namespace MyRshop.Pages.Admin.managefile
             {
                 return Page();
             }
-
-            _context.FileModel.Add(FileModel);
+            string extention = Path.GetExtension(FileModel.myFile1.FileName);
+            FileModel.Extention = extention;
+           _context.FileModel.Add(FileModel);
             await _context.SaveChangesAsync();
 
             if (FileModel.myFile1?.Length > 0)
             {
 
-
+               
                 string filePath = Path.Combine(Directory.GetCurrentDirectory(),
                     "wwwroot",
                     "Files",
-                    FileModel.id + Path.GetExtension(FileModel.myFile1.FileName));//Product.picture.FileName Product.picture.FileName
+                    FileModel.id.ToString() + extention);//Product.picture.FileName Product.picture.FileName
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     FileModel.myFile1.CopyTo(stream);

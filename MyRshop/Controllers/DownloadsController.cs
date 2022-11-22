@@ -56,19 +56,19 @@ namespace MyRshop.Controllers
           //  DownloadFile(id.ToString());
             return RedirectToAction("DownloadFile1");
         }
-        public FileResult DownloadFile(int id)
+        public FileResult DownloadFile(string id, string extention)
         {
-            string fileName = id.ToString();
+            string fileName = id.ToString()+ extention;
             //Build the File Path.
             string path = Path.Combine(Directory.GetCurrentDirectory(),
                     "wwwroot",
-                    "Files" , fileName+".pdf"); 
+                    "Files" , fileName/*+ Path.GetExtension(fileName)*/); 
 
             //Read the File data into Byte Array.
             byte[] bytes = System.IO.File.ReadAllBytes(path);
 
             //Send the File to Download.
-            return File(bytes, "application/octet-stream", fileName+".pdf");
+            return File(bytes, "application/octet-stream", fileName/* Path.GetExtension(fileName)*/);
         }
     }
 }
