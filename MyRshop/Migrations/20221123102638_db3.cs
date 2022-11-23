@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyRshop.Migrations
 {
-    public partial class init : Migration
+    public partial class db3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,6 +37,19 @@ namespace MyRshop.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CategoryOfFiles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CategoryOfFiles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -138,11 +151,6 @@ namespace MyRshop.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Description = table.Column<string>(nullable: false),
-                    HoleTime = table.Column<int>(nullable: false),
-                    TeacherName = table.Column<string>(maxLength: 50, nullable: false),
-                    BiginEndTime = table.Column<string>(maxLength: 50, nullable: false),
-                    BiginDate = table.Column<string>(maxLength: 50, nullable: false),
-                    Days = table.Column<string>(maxLength: 100, nullable: false),
                     ItemId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -154,6 +162,61 @@ namespace MyRshop.Migrations
                         principalTable: "Items",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Comment",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Question = table.Column<string>(nullable: false),
+                    Answer = table.Column<string>(nullable: true),
+                    IsResponsed = table.Column<bool>(nullable: false),
+                    Time = table.Column<DateTime>(nullable: false),
+                    userId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comment", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comment_Users_userId",
+                        column: x => x.userId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FileModel",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    TimeSystem = table.Column<DateTime>(nullable: false),
+                    Extention = table.Column<string>(maxLength: 50, nullable: true),
+                    userId = table.Column<int>(nullable: false),
+                    UsersUserId = table.Column<int>(nullable: true),
+                    CateId = table.Column<int>(nullable: false),
+                    CategoryOfFileId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FileModel", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_FileModel_CategoryOfFiles_CategoryOfFileId",
+                        column: x => x.CategoryOfFileId,
+                        principalTable: "CategoryOfFiles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_FileModel_Users_UsersUserId",
+                        column: x => x.UsersUserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -211,6 +274,9 @@ namespace MyRshop.Migrations
                     Days = table.Column<string>(maxLength: 50, nullable: false),
                     BiginEndTime = table.Column<string>(maxLength: 50, nullable: false),
                     BiginDate = table.Column<string>(maxLength: 50, nullable: false),
+                    HoleTime = table.Column<int>(nullable: false),
+                    TeacherName = table.Column<string>(maxLength: 50, nullable: false),
+                    Capacity = table.Column<int>(nullable: false),
                     ProductId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -231,6 +297,7 @@ namespace MyRshop.Migrations
                     DetailId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderId = table.Column<int>(nullable: false),
+                    ProductId = table.Column<int>(nullable: false),
                     Count = table.Column<int>(nullable: false),
                     ClassProgramId = table.Column<int>(nullable: true),
                     Price = table.Column<int>(nullable: false)
@@ -249,7 +316,18 @@ namespace MyRshop.Migrations
                         principalTable: "Order",
                         principalColumn: "OrderId",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderDetail_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "UserId", "Email", "IsAdmin", "Password", "RegisterDate" },
+                values: new object[] { 1, "rezamediye@gmail.com", true, "Reza123456!", new DateTime(2022, 11, 23, 13, 56, 37, 731, DateTimeKind.Local).AddTicks(6564) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CategoryToProducts_CategoryId",
@@ -260,6 +338,21 @@ namespace MyRshop.Migrations
                 name: "IX_ClassProgram_ProductId",
                 table: "ClassProgram",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comment_userId",
+                table: "Comment",
+                column: "userId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FileModel_CategoryOfFileId",
+                table: "FileModel",
+                column: "CategoryOfFileId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FileModel_UsersUserId",
+                table: "FileModel",
+                column: "UsersUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Order_UserId",
@@ -277,6 +370,11 @@ namespace MyRshop.Migrations
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OrderDetail_ProductId",
+                table: "OrderDetail",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_ItemId",
                 table: "Products",
                 column: "ItemId",
@@ -292,6 +390,12 @@ namespace MyRshop.Migrations
                 name: "CategoryToProducts");
 
             migrationBuilder.DropTable(
+                name: "Comment");
+
+            migrationBuilder.DropTable(
+                name: "FileModel");
+
+            migrationBuilder.DropTable(
                 name: "Hirring");
 
             migrationBuilder.DropTable(
@@ -305,6 +409,9 @@ namespace MyRshop.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "CategoryOfFiles");
 
             migrationBuilder.DropTable(
                 name: "ClassProgram");

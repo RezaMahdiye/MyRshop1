@@ -10,8 +10,8 @@ using MyRshop.Data;
 namespace MyRshop.Migrations
 {
     [DbContext(typeof(MyRshopContext))]
-    [Migration("20221114070635_commnt")]
-    partial class commnt
+    [Migration("20221123102638_db3")]
+    partial class db3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -75,6 +75,21 @@ namespace MyRshop.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("MyRshop.Models.CategoryOfFile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CategoryOfFiles");
                 });
 
             modelBuilder.Entity("MyRshop.Models.CategoryToProduct", b =>
@@ -163,6 +178,49 @@ namespace MyRshop.Migrations
                     b.HasIndex("userId");
 
                     b.ToTable("Comment");
+                });
+
+            modelBuilder.Entity("MyRshop.Models.FileModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CateId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CategoryOfFileId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Extention")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("TimeSystem")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("UsersUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("userId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("CategoryOfFileId");
+
+                    b.HasIndex("UsersUserId");
+
+                    b.ToTable("FileModel");
                 });
 
             modelBuilder.Entity("MyRshop.Models.HirringModel", b =>
@@ -280,11 +338,16 @@ namespace MyRshop.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
                     b.HasKey("DetailId");
 
                     b.HasIndex("ClassProgramId");
 
                     b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("OrderDetail");
                 });
@@ -423,6 +486,16 @@ namespace MyRshop.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            Email = "rezamediye@gmail.com",
+                            IsAdmin = true,
+                            Password = "Reza123456!",
+                            RegisterDate = new DateTime(2022, 11, 23, 13, 56, 37, 731, DateTimeKind.Local).AddTicks(6564)
+                        });
                 });
 
             modelBuilder.Entity("MyRshop.Models.CategoryToProduct", b =>
@@ -458,6 +531,17 @@ namespace MyRshop.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MyRshop.Models.FileModel", b =>
+                {
+                    b.HasOne("MyRshop.Models.CategoryOfFile", "CategoryOfFile")
+                        .WithMany()
+                        .HasForeignKey("CategoryOfFileId");
+
+                    b.HasOne("MyRshop.Models.Users", "Users")
+                        .WithMany()
+                        .HasForeignKey("UsersUserId");
+                });
+
             modelBuilder.Entity("MyRshop.Models.Order", b =>
                 {
                     b.HasOne("MyRshop.Models.Users", "Users")
@@ -477,6 +561,12 @@ namespace MyRshop.Migrations
                     b.HasOne("MyRshop.Models.Order", "Order")
                         .WithMany("OrderDetail")
                         .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyRshop.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

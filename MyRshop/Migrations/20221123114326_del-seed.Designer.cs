@@ -10,8 +10,8 @@ using MyRshop.Data;
 namespace MyRshop.Migrations
 {
     [DbContext(typeof(MyRshopContext))]
-    [Migration("20221120052142_tbl-cateOffile")]
-    partial class tblcateOffile
+    [Migration("20221123114326_del-seed")]
+    partial class delseed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -196,6 +196,10 @@ namespace MyRshop.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Extention")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Name")
                         .IsRequired()

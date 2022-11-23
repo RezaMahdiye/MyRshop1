@@ -10,6 +10,7 @@ namespace MyRshop.Data
 
 
         }
+          public DbSet<Users> Users { set; get; }
         public DbSet<CategoryOfFile> CategoryOfFiles { set; get; }
         public DbSet<FileModel> FileModel { set; get; }
         public DbSet<Comment>Comment { set; get; }
@@ -22,7 +23,7 @@ namespace MyRshop.Data
         public DbSet<CategoryToProduct> CategoryToProducts { set; get; }
         public DbSet<Product> Products { set; get; }
         public DbSet<Item> Items { set; get; }
-        public DbSet<Users> Users { set; get; }
+      
 
         public DbSet<Order> Order { set; get; }
         public DbSet<OrderDetail> OrderDetail { set; get; }
@@ -140,19 +141,20 @@ namespace MyRshop.Data
             //    new CategoryToProduct() { CategoryId = 3, ProductId = 3 }
             //    );
 
-            modelBuilder.Entity<Users>().HasData(new Users()
-            {
-                Email="rezamediye@gmail.com",
-                IsAdmin=true,
-                Password="Reza123456!",
-                RegisterDate=System.DateTime.Now,
-                UserId=1,
+            //modelBuilder.Entity<Users>().HasData(new Users()
+            //{
+            //    Email="rezamediye@gmail.com",
+            //    IsAdmin=true,
+            //    Password="Reza123456!",
+            //    RegisterDate=System.DateTime.Now,
+            //    UserId=1,
 
-            });
+            //});
 
             #endregion
 
             base.OnModelCreating(modelBuilder);
+            
         }
     }
 }

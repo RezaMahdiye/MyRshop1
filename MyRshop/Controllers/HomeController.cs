@@ -62,6 +62,7 @@ namespace MyRshop.Controllers
                 var product = _context.Products.Include(p => p.Item).SingleOrDefault(p => p.ItemId == itemId);
 
                 var classp = _context.ClassProgram.Include(p => p.OrderDetails).ThenInclude(c=>c.Product).SingleOrDefault(c => c.Id == classId);
+               
                 if (classp != null && product != null)
                 {
                     int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier).ToString());
