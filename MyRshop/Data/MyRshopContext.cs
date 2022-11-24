@@ -141,15 +141,15 @@ namespace MyRshop.Data
             //    new CategoryToProduct() { CategoryId = 3, ProductId = 3 }
             //    );
 
-            //modelBuilder.Entity<Users>().HasData(new Users()
-            //{
-            //    Email="rezamediye@gmail.com",
-            //    IsAdmin=true,
-            //    Password="Reza123456!",
-            //    RegisterDate=System.DateTime.Now,
-            //    UserId=1,
+            modelBuilder.Entity<Users>().HasData(new Users()
+            {
+                Email = "rezamediye@gmail.com",
+                IsAdmin = true,
+                Password = "Reza123456!",
+                RegisterDate = System.DateTime.Now,
+                UserId = 1,
 
-            //});
+            });
 
             #endregion
 
